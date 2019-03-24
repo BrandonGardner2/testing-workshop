@@ -26,6 +26,29 @@
 //   for example: `expect('some text content').toMatch('text')`)
 //
 // For your second test, it will be very similar to the first.
+import React from 'react'
+import ReactDOM from 'react-dom'
+import ItemList from '../item-list'
+
+test('renders no items when there are no items', () => {
+  //arrange
+  const container = document.createElement('div')
+  //act
+  ReactDOM.render(<ItemList items={[]} />, container)
+  //assert
+  expect(container.textContent).toMatch('no items')
+})
+
+test('renders the correct list of items provided', () => {
+  //arrange
+  const container = document.createElement('div')
+  //act
+  ReactDOM.render(<ItemList items={['apple', 'orange', 'pear']} />, container)
+  //assert
+  expect(container.textContent).toMatch('apple')
+  expect(container.textContent).toMatch('orange')
+  expect(container.textContent).toMatch('pear')
+})
 
 //////// Elaboration & Feedback /////////
 // When you've finished with the exercises:
